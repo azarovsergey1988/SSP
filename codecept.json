@@ -1,0 +1,43 @@
+{
+  "tests": "tests/**/*user.js",
+  "timeout": 10000,
+  "output": "./output",
+  "helpers": {
+    "FileSystem": {},
+    "REST": {
+      "config": {
+      }
+    },
+    "Puppeteer": {
+      "restart": false,
+      "keepBrowserState": false,
+      "url": "http://localhost",
+      "waitForNavigation": "networkidle0",
+      "waitForTimeout": 10000,
+      "waitForAction": 500,
+      "show": true,
+      "chrome": {
+        "headless": false,
+        "args": [""]
+      },
+      "windowSize": "2200x1000",
+      "disableScreenshots": false
+    }
+  },
+  "plugins": {
+    "screenshotOnFail": {
+      "enabled": true
+    },
+    "allure": {
+      "enabled": true,
+      "outputDir": "allure-results"
+    }
+  },
+  "include":{
+    "login_page": "./pages/login_page.js",
+    "register": "./pages/register_page.js"
+
+  },
+  "mocha": {},
+  "name": "test"
+}
