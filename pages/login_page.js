@@ -3,11 +3,13 @@ const I = actor();
 module.exports = {
 
     elements: {
-        loginPage: 'https://account.bbc.com/signin',                                                             // Login page URL
-        enterButton: 'button[class="button button--full-width"]',                                                // Enter button on login page
-        invalidDataEntryError: '[id="form-message-general"] [class="form-message__text"]',                       // Invalid data entry error message
+        loginPage: 'https://account.bbc.com/signin',                                                                                                // Login page URL
+        enterButton: 'button[class="button button--full-width"]',                                                                                   // Enter button on login page
+        invalidDataEntryError: '[id="form-message-general"] [class="form-message__text"]',                                                          // Invalid data entry error message
         invalidNameEnteredError: '[class="form-message form-message--error form-message--username field__error"] [class="form-message__text"]',     // invalid name entered error
         invalidPasswordEnteredEntry: '[class="form-message form-message--error form-message--password field__error"] [class="form-message__text"]', // invalid password entered error
+        loginField: '[id="user-identifier-input"]',                                                                                                 // Login field
+        passwordField: '[id="password-input"]',                                                                                                     // Password field
 
     },
 
@@ -21,19 +23,29 @@ module.exports = {
         await I.click(this.elements.enterButton);
     },
 
-    async checkInvalidDataEntryError(){                                         // Check invalid name or password entered error exist
+    async checkInvalidDataEntryError(){                                                              // Check invalid name or password entered error exist
         await I.waitForElement(this.elements.invalidDataEntryError);
         await I.seeElementInDOM(this.elements.invalidDataEntryError);
     },
 
-    async checkInvalidNameEnteredError(){                                        // Check invalid name entered error exist
+    async checkInvalidNameEnteredError(){                                                            // Check invalid name entered error exist
         await I.waitForElement(this.elements.invalidNameEnteredError);
         await I.seeElementInDOM(this.elements.invalidNameEnteredError);
     },
 
-    async checkInvalidPasswordEnteredEntry(){                                    // Check invalid password entered error exist
+    async checkInvalidPasswordEnteredEntry(){                                                        // Check invalid password entered error exist
         await I.waitForElement(this.elements.invalidPasswordEnteredEntry);
         await I.seeElementInDOM(this.elements.invalidPasswordEnteredEntry);
+    },
+
+    async inputInLoginField(login) {                                                                  // Input in Login field
+        await I.waitForElement(this.elements.loginField);
+        await I.appendField(this.elements.loginField, login);
+    },
+
+    async inputInPasswordField(password) {                                                            // Input in Password field
+        await I.waitForElement(this.elements.passwordField);
+        await I.appendField(this.elements.passwordField, password);
     },
 
 

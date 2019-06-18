@@ -1,5 +1,5 @@
 {
-  "tests": "tests/**/*user.js",
+  "tests": "tests/**/*_test.js",
   "timeout": 10000,
   "output": "./output",
   "helpers": {
@@ -35,6 +35,7 @@
   },
   "include":{
     "login_page": "./pages/login_page.js",
+    "bbc_page": "./pages/bbc_page.js",
     "register": "./pages/register_page.js"
 
   },
